@@ -1,0 +1,59 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"McpAzureDocsApi.csproj"
+			],
+			"group": "build",
+			"problemMatcher": [
+				"$msCompile"
+			]
+		},
+		{
+			"label": "run",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"run",
+				"--project",
+				"McpAzureDocsApi.csproj"
+			],
+			"group": "test",
+			"isBackground": true,
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"options": {
+				"env": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			}
+		},
+		{
+			"label": "watch",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"watch",
+				"run",
+				"--project",
+				"McpAzureDocsApi.csproj"
+			],
+			"group": "test",
+			"isBackground": true,
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"options": {
+				"env": {
+					"ASPNETCORE_ENVIRONMENT": "Development"
+				}
+			}
+		}
+	]
+}

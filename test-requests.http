@@ -1,0 +1,94 @@
+### Test Azure Documentation MCP Server
+
+### 1. Server Info
+GET http://localhost:5162/
+
+### 2. Health Check
+GET http://localhost:5162/health
+
+### 3. Available Tools
+GET http://localhost:5162/mcp/tools
+
+### 4. Search Azure Documentation - AKS Best Practices
+GET http://localhost:5162/mcp/search?query=AKS best practices&service=aks
+
+### 5. Validate AKS Design
+GET http://localhost:5162/mcp/validate-aks?design=single node cluster with basic networking
+
+### 6. MCP Request - Search Azure Docs
+POST http://localhost:5162/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 1,
+  "params": {
+    "name": "search-azure-docs",
+    "arguments": {
+      "query": "AKS security best practices",
+      "service": "aks"
+    }
+  }
+}
+
+### 7. MCP Request - Validate AKS Design
+POST http://localhost:5162/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 2,
+  "params": {
+    "name": "validate-aks-design",
+    "arguments": {
+      "design_description": "A single node AKS cluster running in basic networking mode without RBAC enabled. The cluster uses default settings and runs workloads without resource limits."
+    }
+  }
+}
+
+### 8. MCP Request - Get Azure Patterns
+POST http://localhost:5162/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "id": 3,
+  "params": {
+    "name": "get-azure-patterns",
+    "arguments": {
+      "pattern_type": "baseline",
+      "service": "aks"
+    }
+  }
+}
+
+### 9. MCP Initialize
+POST http://localhost:5162/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "initialize",
+  "id": 0,
+  "params": {
+    "protocolVersion": "2024-11-05",
+    "capabilities": {},
+    "clientInfo": {
+      "name": "test-client",
+      "version": "1.0.0"
+    }
+  }
+}
+
+### 10. MCP List Tools
+POST http://localhost:5162/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "tools/list",
+  "id": 4
+}

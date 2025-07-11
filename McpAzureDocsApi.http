@@ -1,0 +1,6 @@
+@McpAzureDocsApi_HostAddress = http://localhost:5162
+
+GET {{McpAzureDocsApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
